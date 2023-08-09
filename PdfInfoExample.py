@@ -12,5 +12,5 @@ def run(api_key):
 
 
 if __name__ == "__main__":
-    api_key = "DP.jp1OeWjCQG0FCbkUt7MGXeJCXXEAjy7C5iSJNBNnKzJ9Q5Ss8+SjczcH"
+    api_key = "DP---API-KEY---"
     run(api_key)
