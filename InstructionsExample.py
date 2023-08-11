@@ -5,10 +5,13 @@ from dynamicpdf_api.rgb_color import RgbColor
 from dynamicpdf_api.font import Font
 from dynamicpdf_api.aes256_security import Aes256Security
 from dynamicpdf_api.elements.element_placement import ElementPlacement
+from dynamicpdf_api.elements.text_element import TextElement
 from dynamicpdf_api.elements.page_numbering_element import PageNumberingElement
 from dynamicpdf_api.pdf_resource import PdfResource
 from dynamicpdf_api.html_resource import HtmlResource
-
+from dynamicpdf_api.form_field import FormField
+from dynamicpdf_api.template import Template
+from dynamicpdf_api.elements.aztec_barcode_element import AztecBarcodeElement
 
 def TopLevelMetaData(apiKey):
     pdf = Pdf()
@@ -81,6 +84,79 @@ def MergePdfs(apiKey):
     pdf.add_pdf(resourceTwo)
     return pdf
 
+def AcroFormExample(apiKey):
+    pdf=Pdf()
+    pdf.api_key = apiKey
+    pdf.add_pdf("samples/users-guide-resources/simple-form-fill.pdf");
+    formField = FormField("nameField", "DynamicPDF");
+    formField2 = FormField("descriptionField", "DynamicPDF CloudAPI. RealTime PDFs, Real FAST!");
+    pdf.form_fields.append(formField)
+    pdf.form_fields.append(formField2)
+    return pdf
+
+
+
+def AddOutlinesForNewPdf(apiKey):
+    pdf = Pdf()
+    pdf.api_key = apiKey
+    pdf.author = "John Doe"
+    pdf.title = "Sample Pdf"
+    pageInput = pdf.add_page()
+    element = TextElement("Hello World 1", ElementPlacement.TopCenter)
+    pageInput.elements.append(element)
+    pageInput1 = pdf.add_page()
+    element1 = TextElement("Hello World 2", ElementPlacement.TopCenter)
+    pageInput2 = pdf.add_page()
+    element2 = TextElement("Hello World 3", ElementPlacement.TopCenter)
+    pageInput2.elements.append(element2)
+    rootOutline = pdf.outlines.add("Root Outline")
+    rootOutline.children.add("Page 1", pageInput)
+    rootOutline.children.add("Page 2", pageInput1)
+    rootOutline.children.add("Page 3", pageInput2)
+    return pdf
+
+def AddOutlinesExistingPdf(apiKey):
+    pdf = Pdf()
+    pdf.api_key = apiKey
+    pdf.author = "John Doe"
+    pdf.title = "Sample Pdf"
+    resource = PdfResource("C:/temp/users-guide-resources/AllPageElements.pdf")
+    input = pdf.add_pdf(resource)
+    input.id = "AllPageElements"
+    resource1 = PdfResource("C:/temp/users-guide-resources/OutlineExisting.pdf")
+    input1 = pdf.add_pdf(resource1)
+    input1.id = "outlineDoc1"
+
+    rootOutline = pdf.outlines.add("Imported Outline")
+    rootOutline.expanded = True
+    rootOutline.children.add(input)
+    rootOutline.children.add(input1)
+    return pdf
+
+def TemplateExample(apiKey):
+    pdf = Pdf()
+    pdf.api_key = apiKey
+    resource = PdfResource("C:/temp/merge-pdf/DocumentA.pdf")
+    input = pdf.add_pdf(resource)
+
+    template = Template("Temp1")
+    element = TextElement("Hello World", ElementPlacement.TopCenter)
+    template.elements.append(element)
+    input.template = template
+    return pdf
+
+def BarcodeExample(apiKey):
+    pdf = Pdf()
+    pdf.api_key = apiKey
+    resource = PdfResource("C:/temp/merge-pdf/DocumentA.pdf")
+    input = pdf.add_pdf(resource)
+    template = Template("Temp1")
+    element = AztecBarcodeElement("Hello World", ElementPlacement.TopCenter, 0, 500)
+    template.elements.append(element)
+    input.template = template
+    return pdf
+
+
 def outputResult(outputPath, fileName, response:PdfResponse) :
     if response.is_successful:
          with open(outputPath + fileName, "wb") as output_file:
@@ -89,16 +165,25 @@ def outputResult(outputPath, fileName, response:PdfResponse) :
         print(response.error_json)
 
 
-
 def run(apiKey):    
     basePathOut = "C:/temp/instructions-example/out/"
     #pdf = TopLevelMetaData(apiKey)
     #pdf = FontsExample(apiKey, "C:/temp/fonts-example/cnr.otf")
     #pdf = SecurityExample(apiKey, "C:/temp/merge-pdf/DocumentA.pdf")
     #pdf = HtmlExample(apiKey)
-    pdf = MergePdfs(apiKey)
-    response = pdf.process() 
-    outputResult(basePathOut, "pdf-python-out.pdf", response)
+    #pdf = MergePdfs(apiKey)
+    #pdf = AcroFormExample(apiKey)
+    #pdf = AddOutlinesForNewPdf(apiKey)
+    #pdf = AddOutlinesExistingPdf(apiKey)
+    #pdf = TemplateExample(apiKey)
+    pdf = BarcodeExample(apiKey)
+
+    response = pdf.process()
+    if response.is_successful:
+        outputResult(basePathOut, "pdf-python-out.pdf", response)
+    else:
+        print(response.error_json) 
+    
 
 if __name__ == "__main__":
     api_key = "DP---API-KEY---"
