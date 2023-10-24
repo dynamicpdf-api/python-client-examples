@@ -4,24 +4,24 @@ from dynamicpdf_api.rgb_color import RgbColor
 from dynamicpdf_api.outline_style import OutlineStyle
 from dynamicpdf_api.url_action import UrlAction
 
-def bookmark_pdf(apiKey):
+def bookmark_pdf(apiKey, basePath):
     
     pdf=Pdf()
     pdf.api_key=apiKey
 
-    inputA = pdf.add_pdf(PdfResource("AllFormFields.pdf"))
-    inputA.id="AllFormFields"
+    inputA = pdf.add_pdf(PdfResource(basePath + "DocumentA.pdf"))
+    inputA.id="DocumentA"
 
-    inputB = pdf.add_pdf(PdfResource("AllPageElements.pdf"))
-    inputB.id="AllPageElements"
+    inputB = pdf.add_pdf(PdfResource(basePath + "DocumentB.pdf"))
+    inputB.id="DocumentB"
 
-    inputC = pdf.add_pdf(PdfResource("DocumentA.pdf"))
-    inputC.id="DocumentA"
+    inputC = pdf.add_pdf(PdfResource(basePath + "DocumentC.pdf"))
+    inputC.id="DocumentC"
 
     rootOutline = pdf.outlines.add("Three Bookmarks")
-    outlineA = rootOutline.children.add("AllFormFields", inputA)
-    outlineB = rootOutline.children.add("AllPageElements", inputB)
-    outlineC = rootOutline.children.add("DocumentA", inputC)
+    outlineA = rootOutline.children.add("DocumentA", inputA)
+    outlineB = rootOutline.children.add("DocumentB", inputB)
+    outlineC = rootOutline.children.add("DocumentC", inputC)
     
     rootOutline.color = RgbColor.red()
     rootOutline.style = OutlineStyle.BoldItalic
@@ -37,11 +37,12 @@ def bookmark_pdf(apiKey):
     
     response = pdf.process() 
     if response.is_successful:
-         with open("Outputs/bookmark-python.pdf", "wb") as file:
+         with open(basePath + "bookmark-python-output.pdf", "wb") as file:
             file.write(response.content)
     else:
         print(response.error_id)
     
 # Call the function
-api_key = 'DP---API-KEY---'
-bookmark_pdf(api_key)
+api_key = 'DP.25DHurNAMB8MEgzPg3mmUyBsjkqQbjgVAZuFuu4ynh6OSaBCOp6JIrR7'
+basePath = "C:/temp/dynamicpdf-api-samples/"
+bookmark_pdf(api_key, basePath)
