@@ -11,6 +11,6 @@ def run(api_key, basePath):
     print(response.json_content)
 
 if __name__ == "__main__":
-    api_key = 'DP.25DHurNAMB8MEgzPg3mmUyBsjkqQbjgVAZuFuu4ynh6OSaBCOp6JIrR7'
+    api_key = 'DP---API-KEY---'
     basePath = "C:/temp/dynamicpdf-api-samples/"
     run(api_key, basePath)

@@ -43,6 +43,6 @@ def bookmark_pdf(apiKey, basePath):
         print(response.error_id)
     
 # Call the function
-api_key = 'DP.25DHurNAMB8MEgzPg3mmUyBsjkqQbjgVAZuFuu4ynh6OSaBCOp6JIrR7'
+api_key = 'DP---API-KEY---'
 basePath = "C:/temp/dynamicpdf-api-samples/"
 bookmark_pdf(api_key, basePath)
