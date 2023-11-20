@@ -3,7 +3,7 @@ from dynamicpdf_api.pdf_resource import PdfResource
 
 def merge_pdfs():
     basePath = "C:/temp/dynamicpdf-api-samples/"
-    pdf.api_key="DP.25DHurNAMB8MEgzPg3mmUyBsjkqQbjgVAZuFuu4ynh6OSaBCOp6JIrR7"
+    pdf.api_key="DP.xxx-api-key-xxx"
     pdf=Pdf()
     inputA = pdf.add_pdf(PdfResource(basePath + "DocumentA.pdf"))
     pdf.add_pdf(PdfResource(basePath + "DocumentB.pdf"))

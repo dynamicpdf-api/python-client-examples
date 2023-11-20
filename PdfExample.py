@@ -28,5 +28,5 @@ def run(apiKey):
         print(response.error_id)
     
 # Call the function
-api_key = 'DP---API-KEY---'
+api_key = 'DP.xxx-api-key-xxx'
 run(api_key)

@@ -4,7 +4,7 @@ from dynamicpdf_api.pdf_resource import PdfResource
 def merge_pdfs():
     basePath = "C:/temp/dynamicpdf-api-samples/"
     pdf=Pdf()
-    pdf.api_key="DP.25DHurNAMB8MEgzPg3mmUyBsjkqQbjgVAZuFuu4ynh6OSaBCOp6JIrR7"
+    pdf.api_key="DP.xxx-api-key-xxx"
     inputA = pdf.add_pdf(PdfResource(basePath + "DocumentA.pdf"))
     inputA.start_page = 1
     inputA.page_count = 2

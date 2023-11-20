@@ -29,4 +29,4 @@ def PDfHtmlCssWorkAround(api_key):
     else:
         print(response.error_json)
 
-PDfHtmlCssWorkAround("DP---API-KEY---")
+PDfHtmlCssWorkAround("DP.xxx-api-key-xxx")

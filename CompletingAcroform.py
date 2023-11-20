@@ -26,5 +26,5 @@ def completing_acroform(apiKey, basePath):
         print(response.error_id)
     
 # Call the function
-api_key = 'DP.25DHurNAMB8MEgzPg3mmUyBsjkqQbjgVAZuFuu4ynh6OSaBCOp6JIrR7'
+api_key = 'DP.xxx-api-key-xxx'
 completing_acroform(api_key, "C:/temp/dynamicpdf-api-samples/")

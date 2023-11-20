@@ -15,5 +15,5 @@ def merge_pdfs(apiKey):
         output_file.write(response.content)
     
 # Call the function
-api_key = 'DP---API-KEY---'
+api_key = 'DP.xxx-api-key-xxx'
 merge_pdfs(api_key)

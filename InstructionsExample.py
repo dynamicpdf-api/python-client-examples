@@ -316,5 +316,5 @@ def run(apiKey):
     
 
 if __name__ == "__main__":
-    api_key = "DP---API-KEY---"
+    api_key = "DP.xxx-api-key-xxx"
     run(api_key)

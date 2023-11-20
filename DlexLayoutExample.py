@@ -13,6 +13,6 @@ def dlex_layout(apiKey, basePath):
         print(response.error_id)
     
 # Call the function
-api_key = 'DP---API-KEY---'
+api_key = 'DP.xxx-api-key-xxx'
 basePath = "C:/temp/dynamicpdf-api-samples/"
 dlex_layout(api_key, basePath)
