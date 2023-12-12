@@ -2,15 +2,17 @@ from dynamicpdf_api.pdf import Pdf
 from dynamicpdf_api.html_resource import HtmlResource
 from dynamicpdf_api.page_size import PageSize
 from dynamicpdf_api.page_orientation import PageOrientation
+from Shared import *
 
-def PDfHtmlCssWorkAround(api_key):
+def html_css_work_around(api_key, full_path, output_path):
+
     pdf = Pdf()
     pdf.api_key = api_key
     
-    with open("c:/temp/users-guide-resources/example.html","r") as f:
+    with open(full_path + "example.html","r") as f:
         tempHtml = f.read()
         f.close()
-    with open("c:/temp/users-guide-resources/example.css","r") as g:
+    with open(full_path + "/example.css","r") as g:
         tempCss = g.read()
         g.close()
     
@@ -24,9 +26,10 @@ def PDfHtmlCssWorkAround(api_key):
     response = pdf.process()
 
     if response.is_successful:
-        with open("c:/temp/dynamicpdf-api-usersguide-examples/python-output/workaround-output.pdf", "wb") as output_file:
+        with open(output_path + "workaround-output.pdf", "wb") as output_file:
             output_file.write(response.content)
     else:
         print(response.error_json)
 
-PDfHtmlCssWorkAround("DP.xxx-api-key-xxx")
+if __name__ == "__main__":
+    html_css_work_around(api_key, users_guide_resource_path, output_path + "/users-guide-output/")

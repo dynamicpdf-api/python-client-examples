@@ -1,14 +1,14 @@
 from dynamicpdf_api.pdf import Pdf
-from dynamicpdf_api.page_input import PageInput
 from dynamicpdf_api.rgb_color import RgbColor
 from dynamicpdf_api.font import Font
 from dynamicpdf_api.elements.element_placement import ElementPlacement
 from dynamicpdf_api.elements.page_numbering_element import PageNumberingElement
+from Shared import *
 
-def run(apiKey):
+def pdf_example(apikey, full_path):
     
     pdf=Pdf()
-    pdf.api_key=apiKey
+    pdf.api_key=apikey
     pdf.author = "John Doe"
     pdf.title = "My Blank PDF Page"
     inputPage = pdf.add_page(1008, 612)
@@ -22,11 +22,10 @@ def run(apiKey):
     response = pdf.process() 
 
     if response.is_successful:
-         with open("C:/temp/dynamicpdf-api-samples/out/pdf-output-python.pdf", "wb") as output_file:
+         with open(full_path + "pdf-output-python.pdf", "wb") as output_file:
             output_file.write(response.content)
     else:
         print(response.error_id)
     
-# Call the function
-api_key = 'DP.xxx-api-key-xxx'
-run(api_key)
+if __name__ == "__main__":
+    pdf_example(api_key, base_path + "/pdf-example/")

@@ -18,10 +18,10 @@ from dynamicpdf_api.image_resource import ImageResource
 from dynamicpdf_api.word_input import WordInput
 from dynamicpdf_api.word_resource import WordResource
 import json
-import re
 import io
+from Shared import *
 
-def TopLevelMetaData():
+def ug_top_level_metadata():
     pdf = Pdf()
     pdf.add_page(1008, 612)
     pdf.author = "John Doe"
@@ -31,7 +31,7 @@ def TopLevelMetaData():
     pdf.title = "Sample PDF"
     return pdf
 
-def FontsExample(basePath):
+def ug_fonts_example(basePath):
     pdf = Pdf()
     pageInput = pdf.add_page(1008, 612)
     pageNumberingElement = PageNumberingElement("A", ElementPlacement.TopRight)
@@ -57,7 +57,7 @@ def FontsExample(basePath):
 
     return pdf
 
-def WordExample(documentPath):
+def ug_word_example(documentPath):
     pdf=Pdf()
     fileResource = documentPath
     wordResource = WordResource(documentPath + "Doc1.docx")       
@@ -72,7 +72,7 @@ def WordExample(documentPath):
     pdf.inputs.append(word)
     return pdf
 
-def SecurityExample(documentPath):
+def ug_security_example(documentPath):
     fileResource = documentPath + "DocumentB.pdf"
     userName = "myuser"
     passWord = "mypassword"
@@ -85,7 +85,7 @@ def SecurityExample(documentPath):
     pdf.security = sec
     return pdf
 
-def HtmlExample(documentPath):
+def ug_html_example(documentPath):
     pdf = Pdf()
     pdf.add_html("<html><p>Welcome to DynamicPDF Cloud API.</p></html>")
     
@@ -97,7 +97,7 @@ def HtmlExample(documentPath):
     pdf.add_html("<html><img src='./images/logo.png'></img></html>", "https://www.dynamicpdf.com")
     return pdf
 
-def MergePdfs(documentPath):
+def ug_merge_pdfs(documentPath):
     pdf=Pdf()
     resourceOne = PdfResource(documentPath + "DocumentA.pdf")
     pdf.add_pdf(resourceOne)
@@ -106,7 +106,7 @@ def MergePdfs(documentPath):
     pdf.add_pdf(resourceTwo)
     return pdf
 
-def AcroFormExample():
+def ug_acro_form_example():
     pdf=Pdf()
     pdf.add_pdf("samples/users-guide-resources/simple-form-fill.pdf");
     formField = FormField("nameField", "DynamicPDF");
@@ -115,7 +115,7 @@ def AcroFormExample():
     pdf.form_fields.append(formField2)
     return pdf
 
-def AddOutlinesForNewPdf():
+def ug_add_outlines_for_new_pdf():
     pdf = Pdf()
     pdf.author = "John Doe"
     pdf.title = "Sample Pdf"
@@ -133,7 +133,7 @@ def AddOutlinesForNewPdf():
     rootOutline.children.add("Page 3", pageInput2)
     return pdf
 
-def AddOutlinesExistingPdf(documentPath):
+def ug_add_outlines_existing_pdf(documentPath):
     pdf = Pdf()
     pdf.author = "John Doe"
     pdf.title = "Sample Pdf"
@@ -150,7 +150,7 @@ def AddOutlinesExistingPdf(documentPath):
     rootOutline.children.add(input1)
     return pdf
 
-def TemplateExample(documentPath):
+def ug_template_example(documentPath):
     pdf = Pdf()
     resource = PdfResource(documentPath + "DocumentA.pdf")
     input = pdf.add_pdf(resource)
@@ -161,7 +161,7 @@ def TemplateExample(documentPath):
     input.template = template
     return pdf
 
-def BarcodeExample(documentPath):
+def ug_barcode_example(documentPath):
     pdf = Pdf()
     resource = PdfResource(documentPath + "DocumentA.pdf")
     input = pdf.add_pdf(resource)
@@ -171,13 +171,13 @@ def BarcodeExample(documentPath):
     input.template = template
     return pdf
 
-def DlexPdfExample(documentPath):
+def ug_dlex_pdf_example(documentPath):
     pdf = Pdf()
     layout = LayoutDataResource(documentPath + "SimpleReportWithCoverPage.json")
     pdf.add_dlex("samples/users-guide-resources/SimpleReportWithCoverPage.dlex", layout)
     return pdf
 
-def DlexPdfStringExample(documentPath):
+def ug_dlex_pdf_string_example(documentPath):
     pdf = Pdf()
    
     with open(documentPath + "SimpleReportWithCoverPage.json","r") as f:
@@ -189,7 +189,7 @@ def DlexPdfStringExample(documentPath):
     pdf.add_dlex("samples/users-guide-resources/SimpleReportWithCoverPage.dlex", layout)
     return pdf
 
-def ImageExample(documentPath):
+def ug_image_example(documentPath):
     pdf = Pdf()
 
     #read image as binary stream
@@ -215,7 +215,7 @@ def ImageExample(documentPath):
 
     return pdf
 
-def HtmlExample(documentPath):
+def ug_html_example(documentPath):
     pdf = Pdf()
     pdf.add_html("<html><p>Welcome to DynamicPDF Cloud API.</p></html>")
 
@@ -228,7 +228,7 @@ def HtmlExample(documentPath):
 
     return pdf
 
-def PageExample():
+def ug_page_example():
     pdf = Pdf()
     pageInput = pdf.add_page(1008, 612)
 
@@ -243,7 +243,7 @@ def PageExample():
 
     return pdf
 
-def PdfExample(documentPath):
+def ug_pdf_example(documentPath):
     pdf=Pdf()
     inputA = pdf.add_pdf(PdfResource(documentPath + "DocumentA.pdf"))
 
@@ -260,61 +260,59 @@ def PdfExample(documentPath):
     
     return pdf
 
-def outputResult(outputPath, fileName, response:PdfResponse) :
+def output_result(outputPath, fileName, response:PdfResponse) :
     if response.is_successful:
          with open(outputPath + fileName, "wb") as output_file:
             output_file.write(response.content)
     else:
         print(response.error_json)
 
-def outputPdf(pdf:Pdf, apiKey, baseOutputPath, outputFile):
+def output_pdf(pdf:Pdf, apiKey, baseOutputPath, outputFile):
     pdf.api_key = apiKey
     response = pdf.process()
     if response.is_successful:
-        outputResult(baseOutputPath, outputFile, response)
+        output_result(baseOutputPath, outputFile, response)
     else:
         print(response.error_message)
         print(response.error_json) 
 
-def run(apiKey):    
-    basePathOut = "c:/temp/dynamicpdf-api-usersguide-examples/python-output/"
-    basePathIn = "c:/temp/users-guide-resources/"
-    pdf = TopLevelMetaData()
-    outputPdf(pdf, apiKey, basePathOut, "top-level-metadata-out.pdf")
-    pdf = FontsExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "fonts-out.pdf")
-    pdf = SecurityExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "security-out.pdf")
-    pdf = HtmlExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "html-out.pdf")
-    pdf = MergePdfs(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "merge-out.pdf")
-    pdf = AcroFormExample()
-    outputPdf(pdf, apiKey, basePathOut, "acroform-out.pdf")
-    pdf = AddOutlinesForNewPdf()
-    outputPdf(pdf, apiKey, basePathOut, "outlines-out.pdf")
-    pdf = AddOutlinesExistingPdf(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "outlines-existing-out.pdf")
-    pdf = TemplateExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "template-out.pdf")
-    pdf = BarcodeExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "barcode-out.pdf")
-    pdf = DlexPdfExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "dlex-out.pdf")
-    pdf = DlexPdfStringExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "dlex-string-out.pdf")
-    pdf = ImageExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "top-level-metadata-out.pdf")
-    pdf = HtmlExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "image-out.pdf")
-    pdf = PageExample()
-    outputPdf(pdf, apiKey, basePathOut, "page-out.pdf")
-    pdf = PdfExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "pdf-out.pdf")
-    pdf = WordExample(basePathIn)
-    outputPdf(pdf, apiKey, basePathOut, "word-out.pdf")
+def instruction_example(apiKey, users_guide_resource_path, output_path):    
+    basePathOut = output_path
+    basePathIn = users_guide_resource_path
+    pdf = ug_top_level_metadata()
+    output_pdf(pdf, apiKey, basePathOut, "top-level-metadata-out.pdf")
+    pdf = ug_fonts_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "fonts-out.pdf")
+    pdf = ug_security_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "security-out.pdf")
+    pdf = ug_html_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "html-out.pdf")
+    pdf = ug_merge_pdfs(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "merge-out.pdf")
+    pdf = ug_acro_form_example()
+    output_pdf(pdf, apiKey, basePathOut, "acroform-out.pdf")
+    pdf = ug_add_outlines_for_new_pdf()
+    output_pdf(pdf, apiKey, basePathOut, "outlines-out.pdf")
+    pdf = ug_add_outlines_existing_pdf(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "outlines-existing-out.pdf")
+    pdf = ug_template_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "template-out.pdf")
+    pdf = ug_barcode_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "barcode-out.pdf")
+    pdf = ug_dlex_pdf_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "dlex-out.pdf")
+    pdf = ug_dlex_pdf_string_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "dlex-string-out.pdf")
+    pdf = ug_image_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "top-level-metadata-out.pdf")
+    pdf = ug_html_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "image-out.pdf")
+    pdf = ug_page_example()
+    output_pdf(pdf, apiKey, basePathOut, "page-out.pdf")
+    pdf = ug_pdf_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "pdf-out.pdf")
+    pdf = ug_word_example(basePathIn)
+    output_pdf(pdf, apiKey, basePathOut, "word-out.pdf")
     
-
 if __name__ == "__main__":
-    api_key = "DP.xxx-api-key-xxx"
-    run(api_key)
+    instruction_example(api_key, users_guide_resource_path, output_path)

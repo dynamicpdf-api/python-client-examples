@@ -3,19 +3,20 @@ from dynamicpdf_api.pdf_resource import PdfResource
 from dynamicpdf_api.rgb_color import RgbColor
 from dynamicpdf_api.outline_style import OutlineStyle
 from dynamicpdf_api.url_action import UrlAction
+from Shared import *
 
-def bookmark_pdf(apiKey, basePath):
+def bookmark_pdf(apiKey, full_path):
     
     pdf=Pdf()
     pdf.api_key=apiKey
 
-    inputA = pdf.add_pdf(PdfResource(basePath + "DocumentA.pdf"))
+    inputA = pdf.add_pdf(PdfResource(full_path + "DocumentA.pdf"))
     inputA.id="DocumentA"
 
-    inputB = pdf.add_pdf(PdfResource(basePath + "DocumentB.pdf"))
+    inputB = pdf.add_pdf(PdfResource(full_path + "DocumentB.pdf"))
     inputB.id="DocumentB"
 
-    inputC = pdf.add_pdf(PdfResource(basePath + "DocumentC.pdf"))
+    inputC = pdf.add_pdf(PdfResource(full_path + "DocumentC.pdf"))
     inputC.id="DocumentC"
 
     rootOutline = pdf.outlines.add("Three Bookmarks")
@@ -37,12 +38,10 @@ def bookmark_pdf(apiKey, basePath):
     
     response = pdf.process() 
     if response.is_successful:
-         with open(basePath + "bookmark-python-output.pdf", "wb") as file:
+         with open(full_path + "bookmark-python-output.pdf", "wb") as file:
             file.write(response.content)
     else:
         print(response.error_id)
-    
-# Call the function
-api_key = 'DP.xxx-api-key-xxx'
-basePath = "C:/temp/dynamicpdf-api-samples/"
-bookmark_pdf(api_key, basePath)
+
+if __name__ == "__main__":
+    bookmark_pdf(api_key, base_path + "/add-bookmarks/")

@@ -2,9 +2,10 @@ from dynamicpdf_api.pdf_info import PdfInfo
 from dynamicpdf_api.pdf_resource import PdfResource
 import pprint
 import json
+from Shared import *
 
-def run(api_key, basePath):
-    resource = PdfResource(basePath + "fw9AcroForm_18.pdf")
+def pdf_info_example(api_key, full_path):
+    resource = PdfResource(full_path + "fw4.pdf")
     pdf_info = PdfInfo(resource)
     pdf_info.api_key = api_key
     response = pdf_info.process() 
@@ -12,6 +13,4 @@ def run(api_key, basePath):
 
 
 if __name__ == "__main__":
-    api_key = 'DP.xxx-api-key-xxx'
-    basePath = "C:/temp/dynamicpdf-api-samples/"
-    run(api_key, basePath)
+    pdf_info_example(api_key, base_path + "/pdf-info/")

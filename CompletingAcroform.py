@@ -1,12 +1,13 @@
 from dynamicpdf_api.pdf import Pdf
 from dynamicpdf_api.pdf_resource import PdfResource
 from dynamicpdf_api.form_field import FormField
+from Shared import *
 
-def completing_acroform(apiKey, basePath):
+def completing_acroform(apikey, full_path):
     
     pdf=Pdf()
-    pdf.api_key=apiKey
-    pdf.add_pdf(PdfResource(basePath + "fw9AcroForm_18.pdf"))
+    pdf.api_key=apikey
+    pdf.add_pdf("samples/fill-acro-form-pdf-endpoint/fw9AcroForm_18.pdf")
 
     pdf.form_fields.append(FormField("topmostSubform[0].Page1[0].f1_1[0]", "Any Company, Inc."))
     pdf.form_fields.append(FormField("topmostSubform[0].Page1[0].f1_2[0]", "Any Company"))
@@ -20,11 +21,10 @@ def completing_acroform(apiKey, basePath):
       
     response = pdf.process() 
     if response.is_successful:
-         with open(basePath + "form-fill-output-python.pdf", "wb") as file:
+         with open(full_path + "form-fill-output-python.pdf", "wb") as file:
             file.write(response.content)
     else:
         print(response.error_id)
-    
-# Call the function
-api_key = 'DP.xxx-api-key-xxx'
-completing_acroform(api_key, "C:/temp/dynamicpdf-api-samples/")
+
+if __name__ == "__main__":
+    completing_acroform(api_key, base_path + "/fill-acro-form-pdf-endpoint/")
