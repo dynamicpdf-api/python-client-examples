@@ -177,7 +177,7 @@ def ug_dlex_pdf_example(documentPath):
     pdf.add_dlex("samples/users-guide-resources/SimpleReportWithCoverPage.dlex", layout)
     return pdf
 
-def ug_dlex_pdf_string_example(documentPath):
+def ug_dlex_string_pdf_string_example(documentPath):
     pdf = Pdf()
    
     with open(documentPath + "SimpleReportWithCoverPage.json","r") as f:
