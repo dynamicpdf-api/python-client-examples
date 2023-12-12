@@ -21,9 +21,20 @@ Obtain the PyPI package at https://pypi.org/project/dynamicpdf-api/
 
 ## Resources
 
-To obtain the resources for the project, login to [cloud.dynamicpdf.com](https://cloud.dynamicpdf.com/) (assuming you have an account), and go to the **Resource Manager**. You use the `samples` folder to add the resources for the tutorials and examples from this project. All resources for the sample code in the Users Guide are available at `users-guide-resources`. 
+The local resources for this project are in the project's resources folder.
 
 - [Resource Manager Samples](https://cloud.dynamicpdf.com/docs/usersguide/environment-manager/environment-manager-sample-resources)  
+
+You need the following samples folder in your Cloud Storage space to run all the examples.
+
+* samples/report-with-cover-page
+* samples/creating-pdf-pdf-endpoint
+* samples/creating-a-report-template-designer
+* samples/creating-a-page-template-designer
+* samples/dlex-layout
+* samples/merge-pdfs-pdf-endpoint
+* samples/fill-acro-form-pdf-endpoint
+* samples/creating-a-page-template-designer
 
 For more information on the tutorials and example code, refer to:
 
