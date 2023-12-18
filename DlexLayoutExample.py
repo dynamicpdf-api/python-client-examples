@@ -8,7 +8,7 @@ def dlex_layout(apiKey, full_path):
     dlexEndpoint.api_key=apiKey
     response = dlexEndpoint.process() 
     if response.is_successful:
-         with open(full_path + "python-dlex-layout-example.pdf", "wb") as output_file:
+         with open(output_path + "python-dlex-layout-example.pdf", "wb") as output_file:
             output_file.write(response.content)
     else:
         print(response.error_id)

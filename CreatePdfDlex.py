@@ -11,7 +11,7 @@ def create_pdf_dlex(apikey, full_path):
     pdf.add_dlex("samples/creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.dlex", layoutDataResource)
     response = pdf.process() 
     if response.is_successful:
-         with open(full_path + "create-pdf-dlex-python-output.pdf", "wb") as output_file:
+         with open(output_path + "create-pdf-dlex-python-output.pdf", "wb") as output_file:
             output_file.write(response.content)
     else:
         print(response.error_id)

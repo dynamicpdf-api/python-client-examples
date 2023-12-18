@@ -14,7 +14,7 @@ def pdf_dlex_example(apikey, full_path):
     response = pdf.process() 
 
     if response.is_successful:
-         with open(full_path + "pdf-dlex-output-python.pdf", "wb") as output_file:
+         with open(output_path + "pdf-dlex-output-python.pdf", "wb") as output_file:
             output_file.write(response.content)
     else:
         print(response.error_id)

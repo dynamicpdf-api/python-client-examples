@@ -18,16 +18,10 @@ from PdfTextExample import pdf_text_example
 from InstructionsExample import instruction_example
 from Shared import api_key
 from Shared import base_path
-from Shared import output_path
-from Shared import users_guide_resource_path
 
 def copy_folder():
-    if(Path(base_path).exists()== False):
-        src_dir = './resources'
-        dest_dir = base_path
-        print(os.listdir(src_dir))
-        files = os.listdir(src_dir)
-        shutil.copytree(src_dir, dest_dir)
+    if not os.path.exists("./output"):
+        os.makedirs("./output")
 
 def run():
     copy_folder()
@@ -40,11 +34,11 @@ def run():
     merge_pdfs(api_key, base_path + "/merge-pdfs-pdf-endpoint/")
     pdf_dlex_example(api_key, base_path + "/creating-pdf-pdf-endpoint/")
     pdf_example(api_key, base_path + "/pdf-example/")
-    html_css_work_around(api_key, users_guide_resource_path, output_path)
+    html_css_work_around(api_key, base_path + "/users-guide/")
     html_example(api_key, base_path + "/pdf-html-example/")
     pdf_info_example(api_key, base_path + "/pdf-info/")
     pdf_text_example(api_key, base_path + "/pdf-info/")
-    instruction_example(api_key, users_guide_resource_path, output_path)
+    instruction_example(api_key, base_path + "/users-guide/") 
 
 if __name__ == "__main__":
     run()

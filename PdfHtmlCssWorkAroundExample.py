@@ -4,7 +4,7 @@ from dynamicpdf_api.page_size import PageSize
 from dynamicpdf_api.page_orientation import PageOrientation
 from Shared import *
 
-def html_css_work_around(api_key, full_path, output_path):
+def html_css_work_around(api_key, full_path):
 
     pdf = Pdf()
     pdf.api_key = api_key
@@ -12,7 +12,7 @@ def html_css_work_around(api_key, full_path, output_path):
     with open(full_path + "example.html","r") as f:
         tempHtml = f.read()
         f.close()
-    with open(full_path + "/example.css","r") as g:
+    with open(full_path + "example.css","r") as g:
         tempCss = g.read()
         g.close()
     
@@ -32,4 +32,4 @@ def html_css_work_around(api_key, full_path, output_path):
         print(response.error_json)
 
 if __name__ == "__main__":
-    html_css_work_around(api_key, users_guide_resource_path, output_path + "/users-guide-output/")
+    html_css_work_around(api_key,  base_path + "/users-guide/")

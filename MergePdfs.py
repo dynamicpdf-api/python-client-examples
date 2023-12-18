@@ -12,7 +12,7 @@ def merge_pdfs(apikey, full_path):
     pdf.add_pdf("samples/merge-pdfs-pdf-endpoint/DocumentC.pdf")
     response = pdf.process() 
     if response.is_successful:
-         with open(full_path + "merge-pdfs-output-python.pdf", "wb") as output_file:
+         with open(output_path + "merge-pdfs-output-python.pdf", "wb") as output_file:
             output_file.write(response.content)
     else:
         print(response.error_id)

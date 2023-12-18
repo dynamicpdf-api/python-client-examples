@@ -12,7 +12,7 @@ def html_example(apikey, full_path):
     pdf.add_html("<html><img src='./images/logo.png'></img></html>", "https://www.dynamicpdf.com")
     response = pdf.process() 
     
-    with open(full_path + "html-output-csharp.pdf", "wb") as output_file:
+    with open(output_path + "html-output-csharp.pdf", "wb") as output_file:
         output_file.write(response.content)
     
 if __name__ == "__main__":

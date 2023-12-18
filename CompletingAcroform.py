@@ -21,7 +21,7 @@ def completing_acroform(apikey, full_path):
       
     response = pdf.process() 
     if response.is_successful:
-         with open(full_path + "form-fill-output-python.pdf", "wb") as file:
+         with open(output_path + "form-fill-output-python.pdf", "wb") as file:
             file.write(response.content)
     else:
         print(response.error_id)

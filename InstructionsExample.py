@@ -260,59 +260,59 @@ def ug_pdf_example(documentPath):
     
     return pdf
 
-def output_result(outputPath, fileName, response:PdfResponse) :
+def output_result(fileName, response:PdfResponse) :
     if response.is_successful:
-         with open(outputPath + fileName, "wb") as output_file:
+         with open(output_path + fileName, "wb") as output_file:
             output_file.write(response.content)
     else:
         print(response.error_json)
 
-def output_pdf(pdf:Pdf, apiKey, baseOutputPath, outputFile):
+def output_pdf(pdf:Pdf, apiKey, output_file):
     pdf.api_key = apiKey
     response = pdf.process()
     if response.is_successful:
-        output_result(baseOutputPath, outputFile, response)
+        output_result(output_file, response)
     else:
         print(response.error_message)
         print(response.error_json) 
 
-def instruction_example(apiKey, users_guide_resource_path, output_path):    
+def instruction_example(apiKey, users_guide_resource_path):    
     basePathOut = output_path
     basePathIn = users_guide_resource_path
     pdf = ug_top_level_metadata()
-    output_pdf(pdf, apiKey, basePathOut, "top-level-metadata-out.pdf")
+    output_pdf(pdf, apiKey, "top-level-metadata-out.pdf")
     pdf = ug_fonts_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "fonts-out.pdf")
+    output_pdf(pdf, apiKey, "fonts-out.pdf")
     pdf = ug_security_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "security-out.pdf")
+    output_pdf(pdf, apiKey, "security-out.pdf")
     pdf = ug_html_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "html-out.pdf")
+    output_pdf(pdf, apiKey, "html-out.pdf")
     pdf = ug_merge_pdfs(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "merge-out.pdf")
+    output_pdf(pdf, apiKey, "merge-out.pdf")
     pdf = ug_acro_form_example()
-    output_pdf(pdf, apiKey, basePathOut, "acroform-out.pdf")
+    output_pdf(pdf, apiKey, "acroform-out.pdf")
     pdf = ug_add_outlines_for_new_pdf()
-    output_pdf(pdf, apiKey, basePathOut, "outlines-out.pdf")
+    output_pdf(pdf, apiKey, "outlines-out.pdf")
     pdf = ug_add_outlines_existing_pdf(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "outlines-existing-out.pdf")
+    output_pdf(pdf, apiKey, "outlines-existing-out.pdf")
     pdf = ug_template_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "template-out.pdf")
+    output_pdf(pdf, apiKey, "template-out.pdf")
     pdf = ug_barcode_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "barcode-out.pdf")
+    output_pdf(pdf, apiKey, "barcode-out.pdf")
     pdf = ug_dlex_pdf_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "dlex-out.pdf")
-    pdf = ug_dlex_pdf_string_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "dlex-string-out.pdf")
+    output_pdf(pdf, apiKey, "dlex-out.pdf")
+    pdf = ug_dlex_string_pdf_string_example(basePathIn)
+    output_pdf(pdf, apiKey, "dlex-string-out.pdf")
     pdf = ug_image_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "top-level-metadata-out.pdf")
+    output_pdf(pdf, apiKey, "top-level-metadata-out.pdf")
     pdf = ug_html_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "image-out.pdf")
+    output_pdf(pdf, apiKey, "image-out.pdf")
     pdf = ug_page_example()
-    output_pdf(pdf, apiKey, basePathOut, "page-out.pdf")
+    output_pdf(pdf, apiKey, "page-out.pdf")
     pdf = ug_pdf_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "pdf-out.pdf")
+    output_pdf(pdf, apiKey, "pdf-out.pdf")
     pdf = ug_word_example(basePathIn)
-    output_pdf(pdf, apiKey, basePathOut, "word-out.pdf")
+    output_pdf(pdf, apiKey, "word-out.pdf")
     
 if __name__ == "__main__":
-    instruction_example(api_key, users_guide_resource_path, output_path)
+    instruction_example(api_key, base_path + "/users-guide/") 
