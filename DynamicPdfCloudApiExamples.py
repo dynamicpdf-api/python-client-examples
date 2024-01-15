@@ -18,7 +18,7 @@ from PdfTextExample import pdf_text_example
 from InstructionsExample import instruction_example
 from SolutionImagesTextRecs import solutionsImageTextRecs_example
 from ImageConversion import image_conversion_example
-
+from TemplateExample import template_example
 from Shared import api_key
 from Shared import base_path
 
@@ -28,6 +28,7 @@ def copy_folder():
 
 def run():
     copy_folder()
+    template_example(api_key, base_path + "/templates/")
     image_conversion_example(api_key, base_path + "/image-conversion/")
     solutionsImageTextRecs_example(api_key, base_path + "/images-text-recs/")
     bookmark_pdf(api_key, base_path + "/add-bookmarks/")
