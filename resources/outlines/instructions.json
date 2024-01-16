@@ -1,0 +1,85 @@
+{
+  "inputs": [
+    {
+      "type": "page",
+      "pageWidth": 612,
+      "pageHeight": 792,
+      "elements": [
+        {
+          "type": "text",
+          "text": "Hello World 1",
+          "placement": "topCenter"
+        }
+      ],
+      "id": "a"
+    },
+    {
+      "type": "page",
+      "pageWidth": 612,
+      "pageHeight": 792,
+      "elements": [
+        {
+          "type": "text",
+          "text": "Hello World 2",
+          "placement": "topCenter"
+        }
+      ],
+      "id": "b"
+    },
+    {
+      "type": "page",
+      "pageWidth": 612,
+      "pageHeight": 792,
+      "elements": [
+        {
+          "type": "text",
+          "text": "Hello World 3",
+          "placement": "topCenter"
+        }
+      ],
+      "id": "c"
+    },
+    {
+      "type": "pdf",
+      "mergeOptions": {
+        "outlines": false
+      },
+      "resourceName": "e3799fd7-e1e5-429d-be8e-25f7d3a16f57.pdf",
+      "id": "pdfoutlineinput"
+    }
+  ],
+  "outlines": [
+    {
+      "text": "Root Outline",
+      "children": [
+        {
+          "text": "Page 1",
+          "linkTo": {
+            "inputID": "a",
+            "pageOffset": 0,
+            "pageZoom": "fitPage"
+          }
+        },
+        {
+          "text": "Page 2",
+          "linkTo": {
+            "inputID": "b",
+            "pageOffset": 0,
+            "pageZoom": "fitPage"
+          }
+        },
+        {
+          "text": "Page 3",
+          "linkTo": {
+            "inputID": "c",
+            "pageOffset": 0,
+            "pageZoom": "fitPage"
+          }
+        },
+        {
+          "fromInputID": "pdfoutlineinput"
+        }
+      ]
+    }
+  ]
+}
