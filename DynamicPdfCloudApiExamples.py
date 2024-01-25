@@ -21,6 +21,7 @@ from ImageConversion import image_conversion_example
 from TemplateExample import template_example
 from OutlinesSolution import outlines_solution
 from DeletePages import delete_pages
+from SplitPdf import split_pdf
 
 from Shared import api_key
 from Shared import base_path
@@ -31,6 +32,7 @@ def copy_folder():
 
 def run():
     copy_folder()
+    split_pdf(api_key, base_path + "/split-pdf/")
     delete_pages(api_key, base_path + "/delete-pages/")
     outlines_solution(api_key, base_path + "/outlines/")
     template_example(api_key, base_path + "/templates/")
