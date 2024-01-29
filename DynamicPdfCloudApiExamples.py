@@ -22,6 +22,7 @@ from TemplateExample import template_example
 from OutlinesSolution import outlines_solution
 from DeletePages import delete_pages
 from SplitPdf import split_pdf
+from FormFieldFlattenDelete import form_field_flatten_delete
 
 from Shared import api_key
 from Shared import base_path
@@ -32,6 +33,7 @@ def copy_folder():
 
 def run():
     copy_folder()
+    form_field_flatten_delete(api_key, base_path + "/form-field-flatten/")
     split_pdf(api_key, base_path + "/split-pdf/")
     delete_pages(api_key, base_path + "/delete-pages/")
     outlines_solution(api_key, base_path + "/outlines/")
