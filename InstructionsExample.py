@@ -101,16 +101,16 @@ def ug_merge_pdfs(documentPath):
     pdf=Pdf()
     resourceOne = PdfResource(documentPath + "DocumentA.pdf")
     pdf.add_pdf(resourceOne)
-    pdf.add_image("samples/get-image-info-image-info-endpoint/dynamicpdfLogo.png")
+    pdf.add_image("DPDFLogo.png")
     resourceTwo = PdfResource(documentPath + "DocumentB.pdf")
     pdf.add_pdf(resourceTwo)
     return pdf
 
 def ug_acro_form_example():
     pdf=Pdf()
-    pdf.add_pdf("samples/users-guide-resources/simple-form-fill.pdf");
-    formField = FormField("nameField", "DynamicPDF");
-    formField2 = FormField("descriptionField", "DynamicPDF CloudAPI. RealTime PDFs, Real FAST!");
+    pdf.add_pdf("simple-form-fill.pdf")
+    formField = FormField("nameField", "DynamicPDF")
+    formField2 = FormField("descriptionField", "DynamicPDF CloudAPI. RealTime PDFs, Real FAST!")
     pdf.form_fields.append(formField)
     pdf.form_fields.append(formField2)
     return pdf
@@ -174,7 +174,7 @@ def ug_barcode_example(documentPath):
 def ug_dlex_pdf_example(documentPath):
     pdf = Pdf()
     layout = LayoutDataResource(documentPath + "SimpleReportWithCoverPage.json")
-    pdf.add_dlex("samples/users-guide-resources/SimpleReportWithCoverPage.dlex", layout)
+    pdf.add_dlex("SimpleReportWithCoverPage.dlex", layout)
     return pdf
 
 def ug_dlex_string_pdf_string_example(documentPath):
@@ -186,7 +186,7 @@ def ug_dlex_string_pdf_string_example(documentPath):
     f.close()
     python_obj = json.loads(fileData)
     layout = LayoutDataResource(python_obj)
-    pdf.add_dlex("samples/users-guide-resources/SimpleReportWithCoverPage.dlex", layout)
+    pdf.add_dlex("SimpleReportWithCoverPage.dlex", layout)
     return pdf
 
 def ug_image_example(documentPath):
@@ -205,7 +205,7 @@ def ug_image_example(documentPath):
 
     #get image from cloud storage
 
-    pdf.add_image("samples/users-guide-resources/B.png")
+    pdf.add_image("B.png")
 
     #get image from local file
 
@@ -256,7 +256,7 @@ def ug_pdf_example(documentPath):
     f.close()
 
     pdf.add_pdf(PdfResource(pdfStream))
-    pdf.add_pdf("samples/users-guide-resources/DocumentC.pdf")
+    pdf.add_pdf("DocumentC.pdf")
     
     return pdf
 
@@ -276,9 +276,8 @@ def output_pdf(pdf:Pdf, apiKey, output_file):
         print(response.error_message)
         print(response.error_json) 
 
-def instruction_example(apiKey, users_guide_resource_path):    
+def instruction_example(apiKey, basePathIn):    
     basePathOut = output_path
-    basePathIn = users_guide_resource_path
     pdf = ug_top_level_metadata()
     output_pdf(pdf, apiKey, "top-level-metadata-out.pdf")
     pdf = ug_fonts_example(basePathIn)

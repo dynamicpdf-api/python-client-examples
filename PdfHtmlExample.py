@@ -8,7 +8,12 @@ def html_example(apikey, full_path):
     pdf.api_key=apikey
 
     pdf.add_html("<html><p>This is a test.</p></html>")
-    pdf.add_html(HtmlResource("html.html", "rb"))
+    
+    with open(full_path + "products.html", 'r', encoding='utf-8') as file:
+            htmlString = file.read()
+            
+    htmlResource = HtmlResource(htmlString)
+    pdf.add_html(htmlResource)
     pdf.add_html("<html><img src='./images/logo.png'></img></html>", "https://www.dynamicpdf.com")
     response = pdf.process() 
     
@@ -16,4 +21,4 @@ def html_example(apikey, full_path):
         output_file.write(response.content)
     
 if __name__ == "__main__":
-    html_example(api_key, base_path + "/pdf-html-example/")
+    html_example(api_key, base_path + "/users-guide/")

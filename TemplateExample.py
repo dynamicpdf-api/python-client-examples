@@ -23,26 +23,26 @@ def template_example(apikey, full_path):
     textElement.x_offset = -50
     textElement.y_offset = 100
 
-    element = LineElement(ElementPlacement.TopLeft, 100, 100);
-    element._color = RgbColor.red();
-    element.x_offset = 125;
-    element.y_offset = 150;
-    element.x2_offset = 450;
-    element.y2_offset = 150;
-    element.line_style = LineStyle.solid();
-    element.width = 4;
+    element = LineElement(ElementPlacement.TopLeft, 100, 100)
+    element._color = RgbColor.red()
+    element.x_offset = 125
+    element.y_offset = 150
+    element.x2_offset = 450
+    element.y2_offset = 150
+    element.line_style = LineStyle.solid()
+    element.width = 4
 
-    recElement = RectangleElement(ElementPlacement.TopCenter, 100, 500);
-    recElement.x_offset = -250;
-    recElement.y_offset = 50;
-    recElement.corner_radius = 10;
-    recElement.border_width = 5;
-    recElement.border_style = LineStyle.dots();
-    recElement.border_color = RgbColor.blue();
-    recElement.fill_color = RgbColor.green();
+    recElement = RectangleElement(ElementPlacement.TopCenter, 100, 500)
+    recElement.x_offset = -250
+    recElement.y_offset = 50
+    recElement.corner_radius = 10
+    recElement.border_width = 5
+    recElement.border_style = LineStyle.dots()
+    recElement.border_color = RgbColor.blue()
+    recElement.fill_color = RgbColor.green()
 
-    imgResource = ImageResource(full_path + "dynamicpdfLogo.png");
-    imageElement = ImageElement(imgResource, ElementPlacement.TopCenter, 100, 80);
+    imgResource = ImageResource(full_path + "dynamicpdfLogo.png")
+    imageElement = ImageElement(imgResource, ElementPlacement.TopCenter, 100, 80)
 
     template.elements.append(textElement)
     template.elements.append(element)
@@ -53,7 +53,7 @@ def template_example(apikey, full_path):
     pdf.api_key = apikey
     resource = PdfResource(full_path + "DocumentA.pdf")
     input = PdfInput(resource)
-    input.template = template;
+    input.template = template
     pdf.inputs.append(input)
 
     response = pdf.process() 

@@ -16,12 +16,12 @@ def html_css_work_around(api_key, full_path):
         tempCss = g.read()
         g.close()
     
-    sb1 = tempHtml[0:tempHtml.index("<link"):1];
-    sb2 = tempHtml[tempHtml.index("/>") + 2::];
-    sb = sb1 + "<style>" + tempCss + "</style>" + sb2;
-    print(sb);
-    resource = HtmlResource(sb);
-    pdf.add_html(resource, None, PageSize.Letter, PageOrientation.Portrait,1);
+    sb1 = tempHtml[0:tempHtml.index("<link"):1]
+    sb2 = tempHtml[tempHtml.index("/>") + 2::]
+    sb = sb1 + "<style>" + tempCss + "</style>" + sb2
+    print(sb)
+    resource = HtmlResource(sb)
+    pdf.add_html(resource, None, PageSize.Letter, PageOrientation.Portrait,1)
 
     response = pdf.process()
 

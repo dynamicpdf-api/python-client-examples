@@ -50,7 +50,7 @@ def run():
     pdf_dlex_example(api_key, base_path + "/creating-pdf-pdf-endpoint/")
     pdf_example(api_key, base_path + "/pdf-example/")
     html_css_work_around(api_key, base_path + "/users-guide/")
-    html_example(api_key, base_path + "/pdf-html-example/")
+    html_example(api_key, base_path + "/users-guide/")
     pdf_info_example(api_key, base_path + "/pdf-info/")
     pdf_text_example(api_key, base_path + "/pdf-info/")
     instruction_example(api_key, base_path + "/users-guide/") 

@@ -2,7 +2,7 @@
 
 # python-client-examples
 
-The Cloud API Client Examples uses the DynamicPDF Cloud API Go client library (`go-client`) to create, merge, split, form fill, stamp, obtain metadata, convert, and secure/encrypt PDF documents. This project contains numerous sample projects for the tutorials and examples on [cloud.dynamicpdf.com](https://cloud.dynamicpdf.com/).
+The Cloud API Client Examples uses the DynamicPDF Cloud API Python client library (`python-client`) to create, merge, split, form fill, stamp, obtain metadata, convert, and secure/encrypt PDF documents. This project contains numerous sample projects for the tutorials and examples on [cloud.dynamicpdf.com](https://cloud.dynamicpdf.com/).
 
 The DynamicPDF Cloud API consists of the following endpoints.
 
@@ -13,7 +13,7 @@ The DynamicPDF Cloud API consists of the following endpoints.
 - `pdf-text`
 - `pdf-xmp`
 
-The Python client library (`go-client`) is available on Github ([python-client]([https://github.com/dynamicpdf-api/go-client](https://github.com/dynamicpdf-api/python-client))). For more information, please visit [DynamicPDF Cloud API](https://cloud.dynamicpdf.com/). Support for other languages/platforms (Java, PHP, C#, Node.js, Python) is available on GitHub ([DynamicPDF Cloud API at GitHub](https://github.com/dynamicpdf-api)).
+The Python client library (`python-client`) is available on Github ([python-client]([https://github.com/dynamicpdf-api/python-client](https://github.com/dynamicpdf-api/python-client))). For more information, please visit [DynamicPDF Cloud API](https://cloud.dynamicpdf.com/). Support for other languages/platforms (Java, PHP, C#, Node.js, Python) is available on GitHub ([DynamicPDF Cloud API at GitHub](https://github.com/dynamicpdf-api)).
 
 ## PyPI Package
 Obtain the PyPI package at https://pypi.org/project/dynamicpdf-api/

@@ -13,9 +13,9 @@ def pdfbarcode_example(apikey):
     inputPage = pdf.add_page(1008, 612)
     
     code11BarcodeElement = Code11BarcodeElement("12345678", ElementPlacement.TopCenter, 200, 50, 50)
-    code11BarcodeElement.color = RgbColor.red();
+    code11BarcodeElement.color = RgbColor.red()
 	
-    inputPage.elements.append(code11BarcodeElement);
+    inputPage.elements.append(code11BarcodeElement)
 
     response = pdf.process() 
 
