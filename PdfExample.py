@@ -5,7 +5,7 @@ from dynamicpdf_api.elements.element_placement import ElementPlacement
 from dynamicpdf_api.elements.page_numbering_element import PageNumberingElement
 from Shared import *
 
-def pdf_example(apikey, full_path):
+def pdf_example(apikey):
     
     pdf=Pdf()
     pdf.api_key=apikey
@@ -28,4 +28,4 @@ def pdf_example(apikey, full_path):
         print(response.error_id)
     
 if __name__ == "__main__":
-    pdf_example(api_key, base_path + "/pdf-example/")
+    pdf_example(api_key)

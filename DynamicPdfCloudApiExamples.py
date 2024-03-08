@@ -9,6 +9,7 @@ from CompletingAcroform import completing_acroform
 from CreatePdfDlex import create_pdf_dlex
 from DlexLayoutExample import dlex_layout
 from MergePdfs import merge_pdfs
+from GoogleFontExample import google_example
 from PdfDlexExample import pdf_dlex_example
 from PdfExample import pdf_example
 from PdfHtmlCssWorkAroundExample import html_css_work_around
@@ -47,8 +48,9 @@ def run():
     create_pdf_dlex(api_key, base_path + "/creating-pdf-pdf-endpoint/")
     dlex_layout(api_key, base_path + "/dlex-layout/")
     merge_pdfs(api_key, base_path + "/merge-pdfs-pdf-endpoint/")
+    google_example(api_key)
     pdf_dlex_example(api_key, base_path + "/creating-pdf-pdf-endpoint/")
-    pdf_example(api_key, base_path + "/pdf-example/")
+    pdf_example(api_key)
     html_css_work_around(api_key, base_path + "/users-guide/")
     html_example(api_key, base_path + "/users-guide/")
     pdf_info_example(api_key, base_path + "/pdf-info/")
