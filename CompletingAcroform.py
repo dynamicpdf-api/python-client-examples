@@ -3,7 +3,7 @@ from dynamicpdf_api.pdf_resource import PdfResource
 from dynamicpdf_api.form_field import FormField
 from Shared import *
 
-def completing_acroform(apikey, full_path):
+def completing_acroform(apikey):
     
     pdf=Pdf()
     pdf.api_key=apikey
@@ -27,4 +27,4 @@ def completing_acroform(apikey, full_path):
         print(response.error_id)
 
 if __name__ == "__main__":
-    completing_acroform(api_key, base_path + "/fill-acro-form-pdf-endpoint/")
+    completing_acroform(api_key)
