@@ -8,12 +8,7 @@ def excel_example(apikey, documentPath, outputPath):
     
     pdf=Pdf()
     pdf.api_key=apikey
-    fileResource = documentPath
-    excelResource = ExcelResource(documentPath + "sample-data.xlsx")       
-    excel = ExcelInput(excelResource)
-    
-    pdf.inputs.append(excel)
-
+    pdf.add_excel(ExcelResource(documentPath + "sample-data.xlsx"))       
     response = pdf.process() 
 
     if response.is_successful:
