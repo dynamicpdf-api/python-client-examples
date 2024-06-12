@@ -8,8 +8,8 @@ def dlex_layout(apiKey, full_path):
     dlex_layout_local(apiKey, full_path)
 
 def dlex_layout_cloud(apiKey, full_path):
-    layoutData = LayoutDataResource(full_path + "SimpleReportWithCoverPage.json")
-    dlexEndpoint =DlexLayout("samples/dlex-layout/SimpleReportWithCoverPage.dlex", layoutData)
+    layoutData = LayoutDataResource(full_path + "creating-pdf-dlex-layout.json")
+    dlexEndpoint =DlexLayout("samples/creating-pdf-dlex-layout-endpoint/creating-pdf-dlex-layout.dlex", layoutData)
     dlexEndpoint.api_key=apiKey
     response = dlexEndpoint.process() 
     if response.is_successful:
@@ -19,10 +19,10 @@ def dlex_layout_cloud(apiKey, full_path):
         print(response.error_id)
 
 def dlex_layout_local(apiKey, full_path):
-    layoutData = LayoutDataResource(full_path + "SimpleReportWithCoverPage.json")
-    dlexResource = DlexResource(full_path + "SimpleReportWithCoverPage.dlex", "SimpleReportWithCoverPage.dlex")
+    layoutData = LayoutDataResource(full_path + "creating-pdf-dlex-layout.json")
+    dlexResource = DlexResource(full_path + "creating-pdf-dlex-layout.dlex", "creating-pdf-dlex-layout.dlex")
     dlexEndpoint =DlexLayout(dlexResource, layoutData)
-    dlexEndpoint.add_additional_resource(full_path + "NorthwindLogo.gif")
+    dlexEndpoint.add_additional_resource(full_path + "creating-pdf-dlex-layout.png")
     dlexEndpoint.api_key=apiKey
     response = dlexEndpoint.process() 
     if response.is_successful:
@@ -32,4 +32,4 @@ def dlex_layout_local(apiKey, full_path):
         print(response.error_id)
     
 if __name__ == "__main__":
-    dlex_layout(api_key, base_path + "/dlex-layout/")
+    dlex_layout(api_key, base_path + "/creating-pdf-dlex-layout/")
