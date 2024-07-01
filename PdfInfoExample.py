@@ -13,4 +13,4 @@ def pdf_info_example(api_key, full_path):
 
 
 if __name__ == "__main__":
-    pdf_info_example(api_key, base_path + "/pdf-info/")
+    pdf_info_example(api_key, base_path + "/get-pdf-info-pdf-info-endpoint/")
