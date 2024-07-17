@@ -3,7 +3,10 @@ import shutil
 import os
 from pathlib import Path
 from AddBookmarks import bookmark_pdf
+from ExcelExample import excel_example
 from ImageInfoExample import image_info
+from MergeSolution import merge_solution
+from PdfBarcode import pdfbarcode_example
 from PdfXmpExample import pdf_xmp_info
 from CompletingAcroform import completing_acroform
 from CreatePdfDlex import create_pdf_dlex
@@ -24,9 +27,9 @@ from OutlinesSolution import outlines_solution
 from DeletePages import delete_pages
 from SplitPdf import split_pdf
 from FormFieldFlattenDelete import form_field_flatten_delete
+from WordExample import word_example
 
-from Shared import api_key
-from Shared import base_path
+from Shared import *
 
 def copy_folder():
     if not os.path.exists("./output"):
@@ -34,28 +37,34 @@ def copy_folder():
 
 def run():
     copy_folder()
-    form_field_flatten_delete(api_key, base_path + "/form-field-flatten/")
-    split_pdf(api_key, base_path + "/split-pdf/")
-    delete_pages(api_key, base_path + "/delete-pages/")
-    outlines_solution(api_key, base_path + "/outlines/")
-    template_example(api_key, base_path + "/templates/")
-    image_conversion_example(api_key, base_path + "/image-conversion/")
-    solutionsImageTextRecs_example(api_key, base_path + "/images-text-recs/")
-    bookmark_pdf(api_key, base_path + "/add-bookmarks/")
-    image_info(api_key, base_path + "/image-info/")
-    pdf_xmp_info(api_key, base_path + "/get-xmp-metadata-pdf-xmp-endpoint/")
-    completing_acroform(api_key, base_path + "/fill-acro-form-pdf-endpoint/")
-    create_pdf_dlex(api_key, base_path + "/creating-pdf-pdf-endpoint/")
-    dlex_layout(api_key, base_path + "/dlex-layout/")
-    merge_pdfs(api_key, base_path + "/merge-pdfs-pdf-endpoint/")
-    google_example(api_key)
-    pdf_dlex_example(api_key, base_path + "/creating-pdf-pdf-endpoint/")
-    pdf_example(api_key)
-    html_css_work_around(api_key, base_path + "/users-guide/")
-    html_example(api_key, base_path + "/users-guide/")
-    pdf_info_example(api_key, base_path + "/pdf-info/")
-    pdf_text_example(api_key, base_path + "/pdf-info/")
-    instruction_example(api_key, base_path + "/users-guide/") 
 
+    bookmark_pdf(api_key, base_path + "/add-bookmarks/")
+    completing_acroform(api_key)
+    create_pdf_dlex(api_key, base_path + "/creating-pdf-pdf-endpoint/")
+    delete_pages(api_key, base_path + "/delete-pages/")
+    dlex_layout(api_key, base_path + "/creating-pdf-dlex-layout/")
+    excel_example(api_key, "./resources/users-guide/", "./output/")
+    form_field_flatten_delete(api_key, base_path + "/form-field-flatten/")
+    google_example(api_key)
+    html_example(api_key, base_path + "/users-guide/")
+    html_css_work_around(api_key,  base_path + "/users-guide/")
+    image_conversion_example(api_key, base_path + "/image-conversion/")
+    image_info(api_key, base_path + "/image-info/")
+    instruction_example(api_key, base_path + "/users-guide/") 
+    merge_pdfs(api_key, base_path + "/merge-pdfs-pdf-endpoint/")
+    merge_solution(api_key, base_path, output_path)
+    outlines_solution(api_key, base_path + "/outlines/")
+    pdf_example(api_key)
+    pdfbarcode_example(api_key)
+    pdf_dlex_example(api_key, base_path + "/creating-pdf-pdf-endpoint/")
+    pdf_info_example(api_key, base_path + "/get-pdf-info-pdf-info-endpoint/")
+    pdf_text_example(api_key, base_path + "/pdf-info/")
+    pdf_xmp_info(api_key, base_path + "/get-xmp-metadata-pdf-xmp-endpoint/")
+    solutionsImageTextRecs_example(api_key, base_path + "/images-text-recs/")
+    split_pdf(api_key, base_path + "/split-pdf/")
+    template_example(api_key, base_path + "/templates/")
+    word_example(api_key, "./resources/users-guide/", "./output/")     
+
+    
 if __name__ == "__main__":
     run()

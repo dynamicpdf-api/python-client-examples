@@ -18,6 +18,21 @@ The Python client library (`python-client`) is available on Github ([python-clie
 ## PyPI Package
 Obtain the PyPI package at https://pypi.org/project/dynamicpdf-api/
 
+## Running
+To run any example, set your DynamicPDF API api key in the Shared.py file.
+Run an individual file by typing python -filename-.py
+Run all the files at once by running the DynamicPdfCloudApiExamples.py file.
+
+**Be certain to have added the needed samples in your cloud storage before running.**
+
+If running all at once, you need the following samples in your cloud storage.
+* samples/creating-pdf-pdf-endpoint/
+* samples/fill-acro-form-pdf-endpoint/
+* samples/image-info/
+* samples/creating-pdf-dlex-layout-endpoint/
+* samples/merge-pdfs-pdf-endpoint/
+* samples/blog-dynamic-columns/
+
 
 ## Resources
 
@@ -25,16 +40,9 @@ The local resources for this project are in the project's resources folder.
 
 - [Resource Manager Samples](https://cloud.dynamicpdf.com/docs/usersguide/environment-manager/environment-manager-sample-resources)  
 
-You need the following samples folder in your Cloud Storage space to run all the examples.
+Some examples require you have the sample project in your DynamicPDF API File Manager. 
 
-* samples/report-with-cover-page
-* samples/creating-pdf-pdf-endpoint
-* samples/creating-a-report-template-designer
-* samples/creating-a-page-template-designer
-* samples/dlex-layout
-* samples/merge-pdfs-pdf-endpoint
-* samples/fill-acro-form-pdf-endpoint
-* samples/creating-a-page-template-designer
+* For example, samples/creating-pdf-dlex-layout-endpoint/creating-pdf-dlex-layout.dlex is a resource in the samples/creating-pdf-dlex-layout-endpoint folder in your file manager.  See the document for more information on adding samples to your cloud storage space.
 
 Local files are in the resources folder, and the examples output to the output folder (which is created when run).
 

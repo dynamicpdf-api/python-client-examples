@@ -40,10 +40,10 @@ def ug_fonts_example(basePath):
     pageNumberingElement.font_size = 42
    
 
-    cloudResourceName = "samples/users-guide-resources/Calibri.otf"
+    fontResourceName = basePath + "cnr.otf"
     pageNumberingElementTwo = PageNumberingElement("B", ElementPlacement.TopLeft)
     pageNumberingElementTwo.color = RgbColor.dark_orange()
-    pageNumberingElementTwo.font = Font(cloudResourceName)
+    pageNumberingElementTwo.font = Font.from_file(fontResourceName, "cnr.otf")
     pageNumberingElementTwo.fontSize = 32
 
     pageNumberingElementThree = PageNumberingElement("C", ElementPlacement.TopCenter)
@@ -101,14 +101,14 @@ def ug_merge_pdfs(documentPath):
     pdf=Pdf()
     resourceOne = PdfResource(documentPath + "DocumentA.pdf")
     pdf.add_pdf(resourceOne)
-    pdf.add_image("DPDFLogo.png")
+    pdf.add_image(ImageResource(documentPath + "DPDFLogo.png"))
     resourceTwo = PdfResource(documentPath + "DocumentB.pdf")
     pdf.add_pdf(resourceTwo)
     return pdf
 
-def ug_acro_form_example():
+def ug_acro_form_example(basePath):
     pdf=Pdf()
-    pdf.add_pdf("simple-form-fill.pdf")
+    pdf.add_pdf(PdfResource(basePath + "simple-form-fill.pdf"))
     formField = FormField("nameField", "DynamicPDF")
     formField2 = FormField("descriptionField", "DynamicPDF CloudAPI. RealTime PDFs, Real FAST!")
     pdf.form_fields.append(formField)
@@ -174,7 +174,7 @@ def ug_barcode_example(documentPath):
 def ug_dlex_pdf_example(documentPath):
     pdf = Pdf()
     layout = LayoutDataResource(documentPath + "SimpleReportWithCoverPage.json")
-    pdf.add_dlex("SimpleReportWithCoverPage.dlex", layout)
+    pdf.add_dlex("samples/creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.dlex", layout)
     return pdf
 
 def ug_dlex_string_pdf_string_example(documentPath):
@@ -186,7 +186,7 @@ def ug_dlex_string_pdf_string_example(documentPath):
     f.close()
     python_obj = json.loads(fileData)
     layout = LayoutDataResource(python_obj)
-    pdf.add_dlex("SimpleReportWithCoverPage.dlex", layout)
+    pdf.add_dlex("samples/creating-pdf-pdf-endpoint/SimpleReportWithCoverPage.dlex", layout)
     return pdf
 
 def ug_image_example(documentPath):
@@ -205,7 +205,7 @@ def ug_image_example(documentPath):
 
     #get image from cloud storage
 
-    pdf.add_image("B.png")
+    pdf.add_image("samples/image-info/getting-started.png")
 
     #get image from local file
 
@@ -256,7 +256,7 @@ def ug_pdf_example(documentPath):
     f.close()
 
     pdf.add_pdf(PdfResource(pdfStream))
-    pdf.add_pdf("DocumentC.pdf")
+    pdf.add_pdf("samples/merge-pdfs-pdf-endpoint/DocumentC.pdf")
     
     return pdf
 
@@ -277,41 +277,40 @@ def output_pdf(pdf:Pdf, apiKey, output_file):
         print(response.error_json) 
 
 def instruction_example(apiKey, basePathIn):    
-    basePathOut = output_path
     pdf = ug_top_level_metadata()
-    output_pdf(pdf, apiKey, "top-level-metadata-out.pdf")
+    output_pdf(pdf, apiKey, "ug_top-level-metadata-out.pdf")
     pdf = ug_fonts_example(basePathIn)
-    output_pdf(pdf, apiKey, "fonts-out.pdf")
+    output_pdf(pdf, apiKey, "ug_fonts-out.pdf")
     pdf = ug_security_example(basePathIn)
-    output_pdf(pdf, apiKey, "security-out.pdf")
+    output_pdf(pdf, apiKey, "ug_security-out.pdf")
     pdf = ug_html_example(basePathIn)
-    output_pdf(pdf, apiKey, "html-out.pdf")
+    output_pdf(pdf, apiKey, "ug_html-out.pdf")
     pdf = ug_merge_pdfs(basePathIn)
-    output_pdf(pdf, apiKey, "merge-out.pdf")
-    pdf = ug_acro_form_example()
-    output_pdf(pdf, apiKey, "acroform-out.pdf")
+    output_pdf(pdf, apiKey, "ug_merge-out.pdf")
+    pdf = ug_acro_form_example(basePathIn)
+    output_pdf(pdf, apiKey, "ug_acroform-out.pdf")
     pdf = ug_add_outlines_for_new_pdf()
-    output_pdf(pdf, apiKey, "outlines-out.pdf")
+    output_pdf(pdf, apiKey, "ug_outlines-out.pdf")
     pdf = ug_add_outlines_existing_pdf(basePathIn)
-    output_pdf(pdf, apiKey, "outlines-existing-out.pdf")
+    output_pdf(pdf, apiKey, "ug_outlines-existing-out.pdf")
     pdf = ug_template_example(basePathIn)
-    output_pdf(pdf, apiKey, "template-out.pdf")
+    output_pdf(pdf, apiKey, "ug_template-out.pdf")
     pdf = ug_barcode_example(basePathIn)
-    output_pdf(pdf, apiKey, "barcode-out.pdf")
+    output_pdf(pdf, apiKey, "ug_barcode-out.pdf")
     pdf = ug_dlex_pdf_example(basePathIn)
-    output_pdf(pdf, apiKey, "dlex-out.pdf")
+    output_pdf(pdf, apiKey, "ug_dlex-out.pdf")
     pdf = ug_dlex_string_pdf_string_example(basePathIn)
-    output_pdf(pdf, apiKey, "dlex-string-out.pdf")
+    output_pdf(pdf, apiKey, "ug_dlex-string-out.pdf")
     pdf = ug_image_example(basePathIn)
-    output_pdf(pdf, apiKey, "top-level-metadata-out.pdf")
+    output_pdf(pdf, apiKey, "ug_top-level-metadata-out.pdf")
     pdf = ug_html_example(basePathIn)
-    output_pdf(pdf, apiKey, "image-out.pdf")
+    output_pdf(pdf, apiKey, "ug_image-out.pdf")
     pdf = ug_page_example()
-    output_pdf(pdf, apiKey, "page-out.pdf")
+    output_pdf(pdf, apiKey, "ug_page-out.pdf")
     pdf = ug_pdf_example(basePathIn)
-    output_pdf(pdf, apiKey, "pdf-out.pdf")
+    output_pdf(pdf, apiKey, "ug_pdf-out.pdf")
     pdf = ug_word_example(basePathIn)
-    output_pdf(pdf, apiKey, "word-out.pdf")
+    output_pdf(pdf, apiKey, "ug_word-out.pdf")
     
 if __name__ == "__main__":
-    instruction_example(api_key, base_path + "/users-guide/") 
+    instruction_example(api_key, base_path + "users-guide/") 

@@ -8,7 +8,6 @@ from Shared import *
 def bookmark_pdf(apiKey, full_path):
     
     pdf=Pdf()
-    pdf.base_url = "https://api.dpdf.io/"
     pdf.api_key=apiKey
 
     inputA = pdf.add_pdf(PdfResource(full_path + "DocumentA.pdf"))
