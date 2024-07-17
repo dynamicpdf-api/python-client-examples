@@ -2,9 +2,9 @@
 
 # python-client-examples
 
-The Cloud API Client Examples uses the DynamicPDF Cloud API Python client library (`python-client`) to create, merge, split, form fill, stamp, obtain metadata, convert, and secure/encrypt PDF documents. This project contains numerous sample projects for the tutorials and examples on [cloud.dynamicpdf.com](https://cloud.dynamicpdf.com/).
+The DynamicPDF API Client Examples uses the DynamicPDF API Python client library (`python-client`) to create, merge, split, form fill, stamp, obtain metadata, convert, and secure/encrypt PDF documents. This project contains numerous sample projects for the tutorials and examples on [dpdf.io](https://dpdf.io/).
 
-The DynamicPDF Cloud API consists of the following endpoints.
+The DynamicPDF API consists of the following endpoints.
 
 - `dlex-layout`
 - `image-info`
@@ -13,7 +13,7 @@ The DynamicPDF Cloud API consists of the following endpoints.
 - `pdf-text`
 - `pdf-xmp`
 
-The Python client library (`python-client`) is available on Github ([python-client]([https://github.com/dynamicpdf-api/python-client](https://github.com/dynamicpdf-api/python-client))). For more information, please visit [DynamicPDF Cloud API](https://cloud.dynamicpdf.com/). Support for other languages/platforms (Java, PHP, C#, Node.js, Python) is available on GitHub ([DynamicPDF Cloud API at GitHub](https://github.com/dynamicpdf-api)).
+The Python client library (`python-client`) is available on Github ([python-client]([https://github.com/dynamicpdf-api/python-client](https://github.com/dynamicpdf-api/python-client))). For more information, please visit [DynamicPDF Cloud API](https://cloud.dynamicpdf.com/). Support for other languages/platforms (Java, PHP, C#, Node.js, Python) is available on GitHub ([DynamicPDF API at GitHub](https://github.com/dynamicpdf-api)).
 
 ## PyPI Package
 Obtain the PyPI package at https://pypi.org/project/dynamicpdf-api/
@@ -38,7 +38,7 @@ If running all at once, you need the following samples in your cloud storage.
 
 The local resources for this project are in the project's resources folder.
 
-- [Resource Manager Samples](https://cloud.dynamicpdf.com/docs/usersguide/environment-manager/environment-manager-sample-resources)  
+- [File Manager Samples](https://cloud.dynamicpdf.com/docs/usersguide/environment-manager/environment-manager-sample-resources)  
 
 Some examples require you have the sample project in your DynamicPDF API File Manager. 
 
@@ -70,11 +70,11 @@ The following table lists the available tutorials.
 
 # Support
 
-The primary source for the DynamicPDF Cloud API support is through [Stack Overflow](https://stackoverflow.com/questions/tagged/dynamicpdf-api). Please use the "[dynamicpdf-api](https://stackoverflow.com/questions/tagged/dynamicpdf-api)" tag to ask questions. Our support team actively monitors the tag and responds promptly to any questions.  Also, let us know you asked the question by following up with an email to [support@dynamicpdf.com](mailto:support@dynamicpdf.com). 
+The primary source for the DynamicPDF API support is through [Stack Overflow](https://stackoverflow.com/questions/tagged/dynamicpdf-api). Please use the "[dynamicpdf-api](https://stackoverflow.com/questions/tagged/dynamicpdf-api)" tag to ask questions. Our support team actively monitors the tag and responds promptly to any questions.  Also, let us know you asked the question by following up with an email to [support@dynamicpdf.com](mailto:support@dynamicpdf.com). 
 
 ## Pro Plan Subscribers[#](https://cloud.dynamicpdf.com/support#pro-plan-subscribers)
 
-Ticket support is available to Pro Plan subscribers. But we still encourage you to help the community by posting on Stack Overflow when possible. You can also email [support@dynamicpdf.com](mailto:support@dynamicpdf.com) if you need to ask something specific to your use case that may not help the DynamicPDF Cloud API community.
+Ticket support is available to Pro Plan subscribers. But we still encourage you to help the community by posting on Stack Overflow when possible. You can also email [support@dynamicpdf.com](mailto:support@dynamicpdf.com) if you need to ask something specific to your use case that may not help the DynamicPDF API community.
 
 # License
 
