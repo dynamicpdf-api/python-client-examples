@@ -1,4 +1,5 @@
 from dynamicpdf_api.imaging.pdf_image import PdfImage
+from dynamicpdf_api.imaging.png_image_format import PngImageFormat
 from dynamicpdf_api.pdf_resource import PdfResource
 import pprint
 import json
@@ -14,6 +15,7 @@ def pdf_image_process(api_key, full_path, outfile_name):
     resource = PdfResource(full_path)
     pdf_image = PdfImage(resource)
     pdf_image.api_key = api_key
+    pdf_image.image_format = PngImageFormat()
     response = pdf_image.process()
     
     if response.is_successful:
