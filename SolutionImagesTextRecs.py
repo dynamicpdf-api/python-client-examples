@@ -28,7 +28,7 @@ def solutionsImageTextRecs_example(apikey, full_path):
     inputPage.elements.append(textElement)
 
     element = LineElement(ElementPlacement.TopLeft, 200, 200)
-    element._color = RgbColor.red()
+    element.color = RgbColor.red()
     element.x_offset = 305
     element.y_offset = 150
     element.x2_offset = 900
@@ -48,7 +48,7 @@ def solutionsImageTextRecs_example(apikey, full_path):
     inputPage.elements.append(recElement)
 
     imgResource = ImageResource(full_path + "dynamicpdfLogo.png")
-    imageElement = ImageElement(imgResource, ElementPlacement.TopCenter, 835, 75)
+    imageElement = ImageElement(imgResource, ElementPlacement.TopLeft, 835, 75)
     inputPage.elements.append(imageElement)
 
     response = pdf.process() 

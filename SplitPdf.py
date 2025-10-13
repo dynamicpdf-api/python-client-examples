@@ -3,16 +3,12 @@ from dynamicpdf_api.pdf_resource import PdfResource
 from Shared import *
 
 def split_pdf(apikey, full_path):
+    split(apikey, full_path, 1, 3, "splitpdf-one.pdf")
+    split(apikey, full_path, 6, 2, "splitpdf-two.pdf")
+
+def split(apikey, full_path, startPage, pageCount, outputFile):
     pdf=Pdf()
-    pdf.api_key=apikey
-
-    split(pdf, full_path, 1, 3, "splitpdf-one.pdf")
-    split(pdf, full_path, 6, 2, "splitpdf-two.pdf")
-
-    response = pdf.process() 
-
-def split(pdf, full_path, startPage, pageCount, outputFile):
-
+    pdf.api_key = apikey
     inputA = pdf.add_pdf(PdfResource(full_path + "pdfnumberedinput.pdf"))
     inputA.start_page = startPage
     inputA.page_count = pageCount

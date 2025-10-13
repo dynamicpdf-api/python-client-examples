@@ -39,11 +39,9 @@ def ug_fonts_example(basePath):
     pageNumberingElement.font = Font.courier()
     pageNumberingElement.font_size = 42
    
-
-    fontResourceName = basePath + "cnr.otf"
     pageNumberingElementTwo = PageNumberingElement("B", ElementPlacement.TopLeft)
     pageNumberingElementTwo.color = RgbColor.dark_orange()
-    pageNumberingElementTwo.font = Font.from_file(fontResourceName, "cnr.otf")
+    pageNumberingElementTwo.font = Font("samples/users-guide-resources/Calibri.otf")
     pageNumberingElementTwo.fontSize = 32
 
     pageNumberingElementThree = PageNumberingElement("C", ElementPlacement.TopCenter)
@@ -215,19 +213,6 @@ def ug_image_example(documentPath):
 
     return pdf
 
-def ug_html_example(documentPath):
-    pdf = Pdf()
-    pdf.add_html("<html><p>Welcome to DynamicPDF Cloud API.</p></html>")
-
-    with open(documentPath + "products.html","rt") as f:
-        fileData = f.read()
-    f.close()
-
-    pdf.add_html(fileData)
-    pdf.add_html("<html><img src='./images/logo.png'></img></html>", "https://www.dynamicpdf.com")
-
-    return pdf
-
 def ug_page_example():
     pdf = Pdf()
     pageInput = pdf.add_page(1008, 612)
@@ -302,8 +287,6 @@ def instruction_example(apiKey, basePathIn):
     pdf = ug_dlex_string_pdf_string_example(basePathIn)
     output_pdf(pdf, apiKey, "ug_dlex-string-out.pdf")
     pdf = ug_image_example(basePathIn)
-    output_pdf(pdf, apiKey, "ug_top-level-metadata-out.pdf")
-    pdf = ug_html_example(basePathIn)
     output_pdf(pdf, apiKey, "ug_image-out.pdf")
     pdf = ug_page_example()
     output_pdf(pdf, apiKey, "ug_page-out.pdf")
